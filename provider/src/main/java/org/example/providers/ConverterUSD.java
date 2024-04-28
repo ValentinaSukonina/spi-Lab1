@@ -4,12 +4,15 @@ import org.example.service.CurrencyConverter;
 
 public class ConverterUSD implements CurrencyConverter {
     public ConverterUSD(){
-        System.out.println("ConverterUSD created");
+        System.out.println("SEK converted to USD");
     }
-    public String convert(String name) {
-        return "1USD = " + name + "SEK";
-    }
-    //1 US Dollar = 10,92 Swedish Krona
 
+    @Override
+    public String convert(String inputSEK) {
+        double doubleInputSEK = Double.parseDouble(inputSEK);
+        double usd = doubleInputSEK / 10.92; // 1 usd = 10.92 sek
+        String formatUsd = String.format("%.2f USD", usd);
+        return inputSEK + " SEK = " + formatUsd;
     }
+}
 
